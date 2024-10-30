@@ -8,7 +8,7 @@ import cv2
 # Set path to images here
 path = 'ES666-Assignment3/Images{}*'.format(os.sep)
 all_submissions = glob.glob('ES666-Assignment3/src/*')
-os.makedirs('ES666-Assignment3/results1/', exist_ok=True)
+os.makedirs('ES666-Assignment3/results/', exist_ok=True)
 
 for idx, algo in enumerate(all_submissions):
     print('****************\tRunning Awesome Stitcher developed by: {}  | {} of {}\t********************'.format(algo.split(os.sep)[-1], idx, len(all_submissions)))
