@@ -8,7 +8,7 @@ import cv2
 # Set path to images here
 path = 'ES666-Assignment3/Images{}*'.format(os.sep)
 all_submissions = glob.glob('ES666-Assignment3/src/*')
-os.makedirs('ES666-Assignment3/results/', exist_ok=True)
+os.makedirs('ES666-Assignment3/results1/', exist_ok=True)
 
 for idx, algo in enumerate(all_submissions):
     print('****************\tRunning Awesome Stitcher developed by: {}  | {} of {}\t********************'.format(algo.split(os.sep)[-1], idx, len(all_submissions)))
@@ -36,7 +36,7 @@ for idx, algo in enumerate(all_submissions):
                 os.makedirs(os.path.dirname(outfile), exist_ok=True)
                 cv2.imwrite(outfile, stitched_image)
                 print(homography_matrix_list)
-                print('Panaroma saved ... @ ./results/{}.png'.format(spec.name))
+                print('Panaroma saved ... @ ES666-Assignment3/results/{}.png'.format(spec.name))
                 print('\n\n')
 
     except Exception as e:
