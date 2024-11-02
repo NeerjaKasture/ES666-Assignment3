@@ -111,39 +111,6 @@ class PanaromaStitcher():
         width, height = int(max_x - min_x), int(max_y - min_y)
         return width, height
 
-    # def make_panaroma_for_images_in(self, path):
-    #     img_files = sorted(glob.glob(path + os.sep + '*'))
-    #     imgs = [cv2.imread(img) for img in img_files]
-    #     center_index = len(imgs) // 2
-    #     f = imgs[center_index].shape[1] / (2 * np.pi) * 20
-    #     imgs = [self.cylindrical_projection(img, f) for img in imgs]
-    #     base_img = imgs[center_index]
-    #     homography_matrix_list = []
-    #     homography_matrix_list.append(np.eye(3)) 
-
-    #     for i in range(center_index - 1, -1, -1):
-    #         H = self.compute_homography(imgs[i], imgs[i + 1])
-    #         if H is not None:
-    #             homography_matrix_list.insert(0, H @ homography_matrix_list[0])
-
-    #     for i in range(center_index + 1, len(imgs)):
-    #         H = self.compute_homography(imgs[i - 1], imgs[i])
-    #         if H is not None:
-    #             homography_matrix_list.append(np.linalg.inv(H) @ homography_matrix_list[-1])
-
-    #     final_size = self.calculate_output_size(homography_matrix_list, base_img.shape)
-
-    #     panorama = cv2.warpPerspective(base_img, homography_matrix_list[center_index], final_size)
-
-    #     for i, H in enumerate(homography_matrix_list):
-    #         if i != center_index:
-    #             warped_img = cv2.warpPerspective(imgs[i], H, final_size)
-    #             mask = warped_img > 0
-    #             panorama[mask] = warped_img[mask]
-
-    #     # Crop black borders from the final panorama
-    #     return self.crop_black_borders(panorama), homography_matrix_list
-    
     def make_panaroma_for_images_in(self, path):
         img_files = sorted(glob.glob(path + os.sep + '*'))
         imgs = [cv2.imread(img) for img in img_files]
